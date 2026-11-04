@@ -1,4 +1,0 @@
-/[Li]brary/
-/[Tt]temp/
-/[Oo]bj/
-/[Bb]uild/

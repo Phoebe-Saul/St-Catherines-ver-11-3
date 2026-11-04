@@ -1,0 +1,87 @@
+=========================
+Unity Generated Folders
+=========================
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Uu]ser[Ss]ettings/
+[Mm]emoryCaptures/
+
+=========================
+Unity Cache
+=========================
+[Ss]ysinfo.txt
+
+=========================
+Visual Studio
+=========================
+.vs/
+*.csproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svclog
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+=========================
+JetBrains Rider
+=========================
+.idea/
+*.sln.iml
+.DotSettings.user
+
+=========================
+Visual Studio Code
+=========================
+.vscode/
+
+=========================
+macOS
+=========================
+.DSStore
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.
+
+=========================
+Windows
+=========================
+Thumbs.db
+Desktop.ini
+
+=========================
+Crash Reports
+=========================
+sysinfo.txt
+
+=========================
+Build Artifacts
+=========================
+*.apk
+*.aab
+*.app
+*.exe
+*.dll
+*.so
+*.dylib
+*.zip
+
+=========================
+Temporary Files
+=========================
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
