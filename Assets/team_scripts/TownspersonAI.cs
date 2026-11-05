@@ -55,7 +55,16 @@ private bool playerDetected;
     {
         UpdateFlashlightSize();
 
-        playerDetected = CanSeePlayer();
+        if(SafeZone.IsPlayerSafe){
+            playerDetected = false;
+            isChasing = false;
+            lostPlayerTime = 0f;
+        }
+        else{
+            playerDetected = CanSeePlayer();
+        }
+
+        
 
         if (playerDetected)
         {
@@ -147,6 +156,9 @@ private bool playerDetected;
 
     bool CanSeePlayer()
     {
+        if(SafeZone.IsPlayerSafe)
+            return false;
+        
         if (player == null || flashlightBeam == null || playerWalking == null)
             return false;
 

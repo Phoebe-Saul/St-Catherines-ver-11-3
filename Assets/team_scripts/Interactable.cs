@@ -1,5 +1,6 @@
-using UnityEngine.InputSystem;
+
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
@@ -11,13 +12,14 @@ public class Interactable : MonoBehaviour
 
     void Update()
     {
-        if (DialogueManager.Instance != null &&
-            DialogueManager.Instance.IsDialogueActive)
-            {
+        if (DialogueManager.Instance == null)
             return;
-            }
 
-        if (playerInRange && Keyboard.current.eKey.wasPressedThisFrame)
+        if (DialogueManager.Instance.IsDialogueActive || DialogueManager.Instance.InteractionCooldown)
+            return;
+
+        if (playerInRange && Keyboard.current != null &&
+            Keyboard.current.eKey.wasPressedThisFrame)
         {
             Interact();
         }
@@ -33,27 +35,23 @@ public class Interactable : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = true;
+        if (!other.CompareTag("Player"))
+            return;
 
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(true);
-            }
-        }
+        playerInRange = true;
+
+        if (interactionPrompt != null)
+            interactionPrompt.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerInRange = false;
+        if (!other.CompareTag("Player"))
+            return;
 
-            if (interactionPrompt != null)
-            {
-                interactionPrompt.SetActive(false);
-            }
-        }
+        playerInRange = false;
+
+        if (interactionPrompt != null)
+            interactionPrompt.SetActive(false);
     }
 }

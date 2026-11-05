@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -13,6 +14,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TMP_Text speakerNameText;
     [SerializeField] private TMP_Text dialogueText;
     [SerializeField] private Image portraitImage;
+    private bool interactionCooldown = false;
+    public bool InteractionCooldown => interactionCooldown;
 
     private DialogueData currentDialogue;
     private int currentLine;
@@ -88,5 +91,16 @@ public class DialogueManager : MonoBehaviour
     {
         dialoguePanel.SetActive(false);
         IsDialogueActive = false;
+
+        StartCoroutine(DialogueCooldown());
+    }
+
+    IEnumerator DialogueCooldown()
+    {
+        interactionCooldown = true;
+
+        yield return new WaitForSeconds(1f);
+
+        interactionCooldown = false;
     }
 }
