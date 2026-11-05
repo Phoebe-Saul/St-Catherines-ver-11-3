@@ -26,12 +26,27 @@ public class Walking : MonoBehaviour
     
     void Update()
     {
+        if(PauseController.IsGamePaused || MenuController.IsMenuOpen){
+            rb.linearVelocity = Vector2.zero;
+            animator.SetBool("isWalking", false);
+            return;
+        }
         float currentSpeed = isSneaking ? sneakSpeed : moveSpeed;
         currentSpeed *= hazardSlowMultiplier;
         rb.linearVelocity = moveInput * currentSpeed;
+
+        //for sneaking animation
+        animator.SetBool("isSneaking", isSneaking);
     }
 
     public void Move(InputAction.CallbackContext context){
+        //pauses movement while any menu is open
+        if(PauseController.IsGamePaused || MenuController.IsMenuOpen){
+            moveInput = Vector2.zero;
+            animator.SetBool("isWalking", false);
+            return;
+        }
+        
         animator.SetBool("isWalking", true);
 
         if(context.canceled){
@@ -47,6 +62,8 @@ public class Walking : MonoBehaviour
 
     public void Sneak(InputAction.CallbackContext context)
     {
+        if(PauseController.IsGamePaused || MenuController.IsMenuOpen) return;
+
         if (context.performed)
         {
             isSneaking = true;

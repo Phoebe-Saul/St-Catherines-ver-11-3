@@ -7,6 +7,9 @@ public class PauseController : MonoBehaviour{
     public static bool IsGamePaused{ get; private set;} = false;
     public GameObject pauseMenuUI;
 
+    [Header("Other Menus")]
+    public GameObject tabMenu;
+
     public static void SetPause(bool pause){
         IsGamePaused = pause;
     }
@@ -29,6 +32,9 @@ public class PauseController : MonoBehaviour{
     }
 
     public void Pause(){
+        if(tabMenu != null && tabMenu.activeSelf){
+            tabMenu.SetActive(false);
+        }
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         IsGamePaused = true;
