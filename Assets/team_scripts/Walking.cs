@@ -7,6 +7,7 @@ public class Walking : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float sneakSpeed = 2f;
+    private float hazardSlowMultiplier = 1f;
 
     private Rigidbody2D rb;
     private Vector2 moveInput;
@@ -26,6 +27,7 @@ public class Walking : MonoBehaviour
     void Update()
     {
         float currentSpeed = isSneaking ? sneakSpeed : moveSpeed;
+        currentSpeed *= hazardSlowMultiplier;
         rb.linearVelocity = moveInput * currentSpeed;
     }
 
@@ -53,5 +55,9 @@ public class Walking : MonoBehaviour
         {
             isSneaking = false;
         }
+    }
+    public void SetHazardSlow(float multiplier)
+    {
+        hazardSlowMultiplier = multiplier;
     }
 }

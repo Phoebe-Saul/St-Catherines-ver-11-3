@@ -27,12 +27,12 @@ private bool playerDetected;
     [SerializeField] private Vector3 sneakBeamScale = new Vector3(4f, 3.5f, 1f);
 
     [Header("Chase")]
-    [SerializeField] private float chaseSpeed = 5.5f;
-
+    [SerializeField] private float chaseSpeed = 6f;
+    [SerializeField] private float grabDistance = 2f;
     [SerializeField] private float lostPlayerTime = 1.5f;
 
     private float lostPlayerTimer;
-
+    private bool hasCaughtPlayer;
     private bool isChasing;
 
     private int currentWaypoint = 0;
@@ -170,6 +170,7 @@ private bool playerDetected;
         return true;
     }
 
+    
     void ChasePlayer()
     {
         if (player == null)
@@ -179,6 +180,17 @@ private bool playerDetected;
         }
 
         Vector2 direction = (player.position - transform.position).normalized;
+        
+        float distance = Vector2.Distance(rb.position, player.position);
+        //Debug.Log("Distance to Mary: " + distance);
+        // Catch Mary if close enough
+        Debug.Log("Distance: " + distance + " | Grab: " + grabDistance);
+        if (distance <= grabDistance)
+        {
+            Debug.Log("Grab Distance Reached");
+            CatchPlayer();
+            return;
+        }
 
         rb.linearVelocity = direction * chaseSpeed;
 
@@ -186,6 +198,35 @@ private bool playerDetected;
         {
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             flashlightBeam.rotation = Quaternion.Euler(0f, 0f, angle);
-        }
+        }   
     }
+
+    
+    void CatchPlayer()
+    {
+        if (hasCaughtPlayer)
+            return;
+
+        hasCaughtPlayer = true;
+
+        rb.linearVelocity = Vector2.zero;
+        isChasing = false;
+
+        Debug.Log("MARY HAS BEEN CAUGHT!");
+
+        CatchManager.Instance.PlayerCaught();
+
+        // Allow the enemy to catch Mary again
+        StartCoroutine(ResetCatch());
+    }
+
+    System.Collections.IEnumerator ResetCatch()
+    {
+        yield return new WaitForSeconds(2f);
+
+        hasCaughtPlayer = false;
+    }
+
+
+
 }
