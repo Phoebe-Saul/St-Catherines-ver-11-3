@@ -9,9 +9,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(scene);
     }
 
-    public void quitGame()
+    public void CloseGame()
     {
         Debug.Log("quit!");
         Application.Quit();
+
+        #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #endif
     }
 }
