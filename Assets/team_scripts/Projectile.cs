@@ -9,8 +9,6 @@ public class Projectile : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D collision){
-       Debug.Log("Projectile collision success: " + collision.gameObject.name + ", " + collision.tag);
-       
         //prevent projectile instantly destroying from collision with boss
         if(collision.CompareTag("ThroneBoss")) return;
 
@@ -18,8 +16,8 @@ public class Projectile : MonoBehaviour
             Debug.Log("MC hit!");
         }
 
+        Debug.Log("Projectile collision success: " + collision.gameObject.name + ", " + collision.tag);
+
         Destroy(gameObject);
     }
-
-
 }
