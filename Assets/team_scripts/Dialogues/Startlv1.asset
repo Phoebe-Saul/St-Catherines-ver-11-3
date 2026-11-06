@@ -17,3 +17,4 @@ MonoBehaviour:
   dialogueLines:
   - I think I see something on those columns.
   - I have to sneak past those townsfolk to see what it is.
+  - 'hint: hit the shift key to sneak past. '
