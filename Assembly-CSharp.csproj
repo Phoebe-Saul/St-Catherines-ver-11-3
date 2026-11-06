@@ -99,6 +99,7 @@
     <Compile Include="Assets\MoveText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\team_scripts\RockHazard.cs" />
+    <Compile Include="Assets\team_scripts\SettingsMenu.cs" />
     <Compile Include="Assets\Scenes\SceneLoader.cs" />
     <Compile Include="Assets\team_scripts\ThroneBossAI.cs" />
     <Compile Include="Assets\team_scripts\MenuController.cs" />
