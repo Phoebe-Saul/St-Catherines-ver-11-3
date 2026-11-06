@@ -1,23 +1,64 @@
+
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
     [SerializeField] private float lifetime = 5f;
 
-    void Start(){
+    private Rigidbody2D rb;
+
+    void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
         Destroy(gameObject, lifetime);
     }
 
-    void OnTriggerEnter2D(Collider2D collision){
-        //prevent projectile instantly destroying from collision with boss
-        if(collision.CompareTag("ThroneBoss")) return;
+    public void SetDirection(Vector2 direction, float speed)
+    {
+        if (rb != null)
+        {
+            rb.linearVelocity = direction * speed;
+        }
+    }
 
-        if(collision.CompareTag("Player")){
-            Debug.Log("MC hit!");
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Ignore the boss that fired the projectile
+        if (collision.CompareTag("ThroneBoss"))
+            return;
+
+        // Hit a pillar
+        BossPillar pillar = collision.GetComponent<BossPillar>();
+
+        if (pillar != null)
+        {
+            pillar.TakeHit();
+            Destroy(gameObject);
+            return;
         }
 
-        Debug.Log("Projectile collision success: " + collision.gameObject.name + ", " + collision.tag);
+        // Hit Mary
+        if (collision.CompareTag("Player"))
+        {
+            PlayerHealth health = collision.GetComponent<PlayerHealth>();
 
-        Destroy(gameObject);
+            if (health != null)
+            {
+                health.TakeDamage(20);
+            }
+
+            Destroy(gameObject);
+            return;
+        }
+
+        // Hit another obstacle
+        if (!collision.isTrigger)
+        {
+            Destroy(gameObject);
+        }
     }
 }
