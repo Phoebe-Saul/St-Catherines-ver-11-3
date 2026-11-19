@@ -10,4 +10,8 @@ public class ItemData : MonoBehaviour
     [Header("Preview Animation Sprites")]
     public RuntimeAnimatorController itemAnimatorController;
 
+    [Header("Stacking & World Drop")]
+    public bool isStackable = false;
+    public int maxStackSize = 1;
+    public GameObject worldPrefab;
 }

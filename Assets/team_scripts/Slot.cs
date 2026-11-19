@@ -4,8 +4,8 @@ using UnityEngine.EventSystems;
 public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public GameObject currentItem;
+    [HideInInspector] public int slotIndex;
 
-    // Triggered when mouse enters the slot
     public void OnPointerEnter(PointerEventData eventData)
     {
         if (currentItem != null)
@@ -13,18 +13,16 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             ItemData data = currentItem.GetComponent<ItemData>();
             if (data != null)
             {
-                InventoryUIManager.Instance.DisplayHoverInfo(data);
+                InventoryUIManager.Instance?.DisplayHoverInfo(data);
             }
         }
     }
 
-    // Triggered when mouse leaves the slot
     public void OnPointerExit(PointerEventData eventData)
     {
-        InventoryUIManager.Instance.ClearHoverInfo();
+        InventoryUIManager.Instance?.ClearHoverInfo();
     }
 
-    // Triggered when you CLICK on the slot/item
     public void OnPointerClick(PointerEventData eventData)
     {
         if (currentItem != null)
@@ -32,7 +30,8 @@ public class Slot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IP
             ItemData data = currentItem.GetComponent<ItemData>();
             if (data != null)
             {
-                InventoryUIManager.Instance.SelectAndAnimateItem(data);
+                InventoryUIManager.Instance?.SelectAndAnimateItem(data);
+                InventoryController.Instance?.SelectSlot(slotIndex);
             }
         }
     }

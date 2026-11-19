@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
 
 public class InventoryUIManager : MonoBehaviour
@@ -9,24 +8,26 @@ public class InventoryUIManager : MonoBehaviour
     [Header("UI References")]
     [SerializeField] private TMP_Text nameText;
     [SerializeField] private TMP_Text descriptionText;
-    
-    [Header("Preview Window Reference")]
-    [SerializeField] private Animator previewAnimator; // <--- This was missing from your class variables
 
-    void Awake()
+    [Header("Preview Window Reference")]
+    [SerializeField] private Animator previewAnimator;
+
+    private void Awake()
     {
         if (Instance == null) Instance = this;
         else Destroy(gameObject);
     }
 
-    void Start()
+    private void Start()
     {
         ClearHoverInfo();
+        ClearPreview();
     }
 
     // Called on HOVER
     public void DisplayHoverInfo(ItemData itemData)
     {
+        if (itemData == null) return;
         if (nameText != null) nameText.text = itemData.itemName;
         if (descriptionText != null) descriptionText.text = itemData.itemDescription;
     }
@@ -38,10 +39,10 @@ public class InventoryUIManager : MonoBehaviour
         if (descriptionText != null) descriptionText.text = "Hover over an item to inspect.";
     }
 
-    // Called on CLICK to play the animation controller
+    // Called on CLICK or PICKUP to play the animation controller
     public void SelectAndAnimateItem(ItemData itemData)
     {
-        if (previewAnimator == null) return;
+        if (previewAnimator == null || itemData == null) return;
 
         if (itemData.itemAnimatorController != null)
         {
@@ -50,7 +51,14 @@ public class InventoryUIManager : MonoBehaviour
         }
         else
         {
-            previewAnimator.gameObject.SetActive(false);
+            ClearPreview();
         }
+    }
+
+    public void ClearPreview()
+    {
+        if (previewAnimator == null) return;
+        previewAnimator.runtimeAnimatorController = null;
+        previewAnimator.gameObject.SetActive(false);
     }
 }
