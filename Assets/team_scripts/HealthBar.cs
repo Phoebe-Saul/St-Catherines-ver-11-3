@@ -12,6 +12,7 @@ public class HealthBar : MonoBehaviour
         if (playerHealth != null && slider != null)
         {
             slider.value = playerHealth.currentHealth;
+            Debug.Log("Slider value: " + slider.value);
         }
     }
 }

@@ -87,7 +87,7 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void EndDialogue()
+    public void EndDialogue()
     {
         dialoguePanel.SetActive(false);
         IsDialogueActive = false;
@@ -103,4 +103,6 @@ public class DialogueManager : MonoBehaviour
 
         interactionCooldown = false;
     }
+
+    
 }

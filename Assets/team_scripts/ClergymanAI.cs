@@ -41,6 +41,7 @@ public class ClergymanAI : MonoBehaviour
     private float lostPlayerTimer = 0f;
     private float nextAttackTime = 0f;
 
+    
     void Awake()
     {
         if (rb == null)
@@ -56,8 +57,25 @@ public class ClergymanAI : MonoBehaviour
             playerWalking = playerObject.GetComponent<Walking>();
             playerHealth = playerObject.GetComponent<PlayerHealth>();
             playerRb = playerObject.GetComponent<Rigidbody2D>();
+
+            if (playerHealth == null)
+                Debug.LogError("Mary is missing PlayerHealth!");
+
+            if (playerWalking == null)
+                Debug.LogError("Mary is missing Walking!");
+
+            if (playerRb == null)
+                Debug.LogError("Mary is missing Rigidbody2D!");
         }
+        else
+        {
+            Debug.LogError("Clergyman couldn't find an object tagged Player!");
+        }
+
+        if (rb == null)
+            Debug.LogError("Clergyman is missing Rigidbody2D!");
     }
+
 
     void Update()
     {
@@ -303,10 +321,13 @@ IEnumerator StaffAttack()
 
     void HitPlayer()
     {
-        if (playerHealth != null)
+        if (playerHealth == null)
         {
-            playerHealth.TakeDamage(attackDamage);
+            Debug.LogWarning("Cannot damage Mary: PlayerHealth is missing!");
+            return;
         }
+
+        playerHealth.TakeDamage(attackDamage);
 
         Debug.Log("Mary was hit by the clergyman's staff!");
 
