@@ -4,32 +4,62 @@ using UnityEngine.InputSystem;
 
 public class Interactable : MonoBehaviour
 {
+    public enum InteractionType
+    {
+        Dialogue,
+        NumberLock
+    }
+
     [Header("Interaction")]
+    [SerializeField] private InteractionType interactionType;
+
     [SerializeField] private DialogueTrigger dialogueTrigger;
+    [SerializeField] private NumberLock numberLock;
+
     [SerializeField] private GameObject interactionPrompt;
 
     private bool playerInRange;
 
+    
     void Update()
     {
-        if (DialogueManager.Instance == null)
+        if (Keyboard.current == null)
             return;
 
-        if (DialogueManager.Instance.IsDialogueActive || DialogueManager.Instance.InteractionCooldown)
+        if (!playerInRange)
             return;
 
-        if (playerInRange && Keyboard.current != null &&
-            Keyboard.current.eKey.wasPressedThisFrame)
+        if (DialogueManager.Instance != null)
+        {
+            if (DialogueManager.Instance.IsDialogueActive)
+                return;
+
+            if (interactionType == InteractionType.Dialogue &&
+                DialogueManager.Instance.InteractionCooldown)
+                return;
+        }
+
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             Interact();
         }
     }
 
+
     void Interact()
     {
-        if (dialogueTrigger != null)
+        Debug.Log("INTERACT METHOD WAS CALLED");
+        switch (interactionType)
         {
-            dialogueTrigger.TriggerDialogue();
+            case InteractionType.Dialogue:
+                if (dialogueTrigger != null)
+                    dialogueTrigger.TriggerDialogue();
+                break;
+
+            case InteractionType.NumberLock:
+                if (numberLock != null)
+                    numberLock.OpenLock();
+                break;
         }
     }
 

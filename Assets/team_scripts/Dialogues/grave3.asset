@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bd2e15d3c127f42e9a37dc59e88933a6, type: 3}
-  m_Name: New Dialogue
+  m_Name: grave3
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   characterName: Mary
   portrait: {fileID: 0}
   dialogueLines:
   - I can barely make out the words...
-  - The ground beneath cold with loss. The burden falls upon the decaying cross.
+  - The ground beneath, cold with loss. The burden falls upon the decaying cross.

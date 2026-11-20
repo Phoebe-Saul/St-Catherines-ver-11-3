@@ -21,6 +21,7 @@ public class NumberLock : MonoBehaviour
 
     public void OpenLock()
     {
+        Debug.Log("OPEN LOCK WAS CALLED");
         if (isOpen) return;
 
         lockPanel.SetActive(true);
