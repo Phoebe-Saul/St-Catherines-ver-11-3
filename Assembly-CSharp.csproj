@@ -48,22 +48,29 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.2.8f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\team_scripts\ClergymanAI.cs" />
+    <Compile Include="Assets\team_scripts\ForestKeyManager.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventHandler.cs" />
     <Compile Include="Assets\team_scripts\DialogueTrigger.cs" />
     <Compile Include="Assets\team_scripts\Walking.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\EnvMapAnimator.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_A.cs" />
+    <Compile Include="Assets\team_scripts\NumberLock.cs" />
     <Compile Include="Assets\team_scripts\BossAoE.cs" />
     <Compile Include="Assets\team_scripts\SaveController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\SpriteColorAnimation.cs" />
+    <Compile Include="Assets\team_scripts\ForestKeys.cs" />
     <Compile Include="Assets\team_scripts\DialogueData.cs" />
     <Compile Include="Assets\team_scripts\NewScene.cs" />
+    <Compile Include="Assets\team_scripts\DogAI.cs" />
     <Compile Include="Assets\team_scripts\TabController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_ExampleScript_01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMPro_InstructionOverlay.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeB.cs" />
+    <Compile Include="Assets\team_scripts\BearTrapHazard.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexJitter.cs" />
+    <Compile Include="Assets\team_scripts\WestGateLock.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_UiFrameRateCounter.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextSelector_B.cs" />
@@ -77,13 +84,16 @@
     <Compile Include="Assets\team_scripts\DialogueManager.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\TopDownCharacterController.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexShakeA.cs" />
+    <Compile Include="Assets\team_scripts\PitfallHazard.cs" />
     <Compile Include="Assets\team_scripts\PauseController.cs" />
+    <Compile Include="Assets\team_scripts\WorldPickup.cs" />
     <Compile Include="Assets\team_scripts\MainMenu.cs" />
     <Compile Include="Assets\team_scripts\Projectile.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\SimpleScript.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark04.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\ChatController.cs" />
+    <Compile Include="Assets\team_scripts\BoundaryDialogue.cs" />
     <Compile Include="Assets\team_scripts\SafeZone.cs" />
     <Compile Include="Assets\team_scripts\Slot.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_DigitValidator.cs" />
@@ -99,7 +109,9 @@
     <Compile Include="Assets\MoveText.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark03.cs" />
     <Compile Include="Assets\team_scripts\RockHazard.cs" />
+    <Compile Include="Assets\team_scripts\DoorSpawnContext.cs" />
     <Compile Include="Assets\team_scripts\SettingsMenu.cs" />
+    <Compile Include="Assets\team_scripts\EnterDoors.cs" />
     <Compile Include="Assets\Scenes\SceneLoader.cs" />
     <Compile Include="Assets\team_scripts\ThroneBossAI.cs" />
     <Compile Include="Assets\team_scripts\MenuController.cs" />
@@ -116,12 +128,14 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TMP_TextEventCheck.cs" />
     <Compile Include="Assets\team_scripts\Interactable.cs" />
     <Compile Include="Assets\team_scripts\BossPillar.cs" />
+    <Compile Include="Assets\team_scripts\SpawnOutside.cs" />
     <Compile Include="Assets\team_scripts\HealthBar.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\TextMeshProFloatingText.cs" />
     <Compile Include="Assets\team_scripts\CatchManager.cs" />
     <Compile Include="Assets\team_scripts\InventoryController.cs" />
     <Compile Include="Assets\Cainos\Pixel Art Top Down - Basic\Script\StairsLayerTrigger.cs" />
     <Compile Include="Assets\team_scripts\TownspersonAI.cs" />
+    <Compile Include="Assets\Anokolisa&apos;s Pixel Crawler Asset Pack\Environment\Tilesets\exportpng.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

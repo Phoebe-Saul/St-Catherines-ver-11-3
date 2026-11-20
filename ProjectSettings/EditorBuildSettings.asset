@@ -26,6 +26,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ThroneRoom.unity
     guid: f353aa41de877d2439063828d9fa40e2
+  - enabled: 1
+    path: Assets/Scenes/TownHouses/SW1.unity
+    guid: e35d73069a6a9494db0bbfbc558f3242
+  - enabled: 1
+    path: Assets/Scenes/Town V2.unity
+    guid: c7db7ad343a7be946b48fac08af5b50c
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

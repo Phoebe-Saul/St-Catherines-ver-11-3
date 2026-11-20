@@ -6,7 +6,7 @@ public class ForestKeyManager : MonoBehaviour
     public static ForestKeyManager Instance;
 
     [Header("Keys")]
-    [SerializeField] private int totalKeys = 6;
+    [SerializeField] private int totalKeys = 3;
     [SerializeField] private TMPro.TMP_Text keyCounterText;
 
     private int collectedKeys = 0;
