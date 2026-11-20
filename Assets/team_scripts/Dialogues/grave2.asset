@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: grave2
   m_EditorClassIdentifier: Assembly-CSharp::DialogueData
   characterName: Mary
-  portrait: {fileID: 0}
+  portrait: {fileID: 8395455421578703619, guid: 263534f3c47cb4fa6a80d0755519db5f, type: 3}
   dialogueLines:
   - Ok another message...
   - Stones perch upon lifeless earth. Waiting for the towns final rebirth.

@@ -574,6 +574,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 100
   currentHealth: 100
+  respawnPoint: {fileID: 0}
+  respawnDelay: 2
+  respawnPanel: {fileID: 0}
 --- !u!1 &69169845
 GameObject:
   m_ObjectHideFlags: 0
@@ -27245,11 +27248,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ThroneBossAI
   player: {fileID: 31509091}
-  chaseSpeed: 3
-  chaseDuration: 10
+  chaseSpeed: 3.5
+  chaseDuration: 7
   attackDuration: 7
   timeBetweenBursts: 1
-  projectilesPerBurst: 10
+  projectilesPerBurst: 15
   projectilePrefab: {fileID: 6020577599475599588, guid: ee73fadf5b11fde498a505e98b1028e5, type: 3}
   firePoint: {fileID: 0}
   projectileSpeed: 10
