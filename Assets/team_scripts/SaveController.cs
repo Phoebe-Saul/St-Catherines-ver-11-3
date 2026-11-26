@@ -38,8 +38,9 @@ public class SaveController : MonoBehaviour
 
             GameObject player = GameObject.FindGameObjectWithTag("Player");
             if (string.IsNullOrEmpty(DoorSpawnContext.NextSpawnId) &&
-                player != null &&
-                saveData.sceneName == currentSceneName)
+    !DoorSpawnContext.HasReturnPosition &&
+    player != null &&
+    saveData.sceneName == currentSceneName)
             {
                 player.transform.position = saveData.playerPosition;
             }

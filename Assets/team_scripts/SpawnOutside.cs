@@ -1,5 +1,7 @@
+
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SpawnOutside : MonoBehaviour
 {
@@ -7,17 +9,32 @@ public class SpawnOutside : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log($"SpawnOutside '{spawnId}' | NextSpawnId: '{DoorSpawnContext.NextSpawnId}' | Player: {GameObject.FindGameObjectWithTag("Player")}");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
+        if (player == null) return;
+
+        // Returning from a house
+        if (DoorSpawnContext.HasReturnPosition &&
+            SceneManager.GetActiveScene().name ==
+            DoorSpawnContext.ReturnSceneName)
+        {
+            player.transform.position = DoorSpawnContext.ReturnPosition;
+
+            Debug.Log("Returned player to: " + player.transform.position);
+
+            DoorSpawnContext.HasReturnPosition = false;
+            DoorSpawnContext.NextSpawnId = null;
+
+            return;
+        }
+
+        // Normal door spawn
         if (string.IsNullOrEmpty(DoorSpawnContext.NextSpawnId)) return;
         if (DoorSpawnContext.NextSpawnId != spawnId) return;
 
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
-        if (player != null)
-        {
-            player.transform.position = transform.position;
-            Debug.Log($"Moved {player.name} to {player.transform.position} (SpawnOutside pos: {transform.position})");
-        }
+        player.transform.position = transform.position;
+
+        Debug.Log($"Moved {player.name} to {transform.position}");
 
         StartCoroutine(ClearSpawnIdEndOfFrame());
     }
